@@ -18,14 +18,12 @@ func main() {
 
 		hostportSplit := strings.Split(hostport, ":")
 		if len(hostportSplit) != 2 {
-			fmt.Println("host and port should be provided in format host:port")
 			continue
 		}
 
 		// Connect to the host and port
 		conn, err := tls.Dial("tcp", hostport, &tls.Config{InsecureSkipVerify: true})
 		if err != nil {
-			fmt.Println("Error connecting to host: ", err)
 			continue
 		}
 		defer conn.Close()
